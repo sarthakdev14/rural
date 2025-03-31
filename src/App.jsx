@@ -1,29 +1,34 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { LanguageProvider } from "./context/LanguageContext";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import Telemedicine from "./pages/Telemedicine";
 import Resources from "./pages/Resources";
 import Emergency from "./pages/Emergency";
+import { LanguageProvider } from "./context/LanguageContext";
+import { DarkModeProvider } from "./context/DarkModeContext";
 
 function App() {
   return (
     <LanguageProvider>
-      <Router>
-        <div className="min-h-screen bg-white">
-          <Navbar />
-          <main className="pt-16">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/telemedicine" element={<Telemedicine />} />
-              <Route path="/resources" element={<Resources />} />
-              <Route path="/emergency" element={<Emergency />} />
-            </Routes>
-          </main>
-        </div>
-      </Router>
+      <DarkModeProvider>
+        <Router>
+          <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+            <Navbar />
+            <main>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/telemedicine" element={<Telemedicine />} />
+                <Route path="/resources" element={<Resources />} />
+                <Route path="/emergency" element={<Emergency />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </Router>
+      </DarkModeProvider>
     </LanguageProvider>
   );
 }
