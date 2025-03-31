@@ -42,8 +42,8 @@ export const languages = {
     bookAppointment: "Book Appointment",
 
     // Services Page
-    servicesTitle: "Our Services",
-    servicesDescription:
+    servicesPageTitle: "Our Services",
+    servicesPageDescription:
       "We provide comprehensive healthcare solutions designed specifically for rural communities",
     emergencyCare: "24/7 Emergency Care",
     emergencyCareDesc:
@@ -164,8 +164,8 @@ export const languages = {
     bookAppointment: "Reservar Cita",
 
     // Services Page
-    servicesTitle: "Nuestros Servicios",
-    servicesDescription:
+    servicesPageTitle: "Nuestros Servicios",
+    servicesPageDescription:
       "Proporcionamos soluciones integrales de salud diseñadas específicamente para comunidades rurales",
     emergencyCare: "Atención de Emergencia 24/7",
     emergencyCareDesc:
@@ -290,9 +290,9 @@ export const languages = {
     bookAppointment: "अपॉइंटमेंट बुक करें",
 
     // Services Page
-    servicesTitle: "हमारी सेवाएं",
-    servicesDescription:
-      "We provide comprehensive healthcare solutions designed specifically for rural communities",
+    servicesPageTitle: "हमारी सेवाएं",
+    servicesPageDescription:
+      "हम ग्रामीण समुदायों के लिए विशेष रूप से डिज़ाइन किए गए व्यापक स्वास्थ्य समाधान प्रदान करते हैं",
     emergencyCare: "24/7 Emergency Care",
     emergencyCareDesc:
       "Immediate medical attention available round the clock for critical situations",

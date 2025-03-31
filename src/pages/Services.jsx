@@ -101,10 +101,10 @@ function Services() {
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&q=80')] bg-cover bg-center opacity-20"></div>
         <div className="relative container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold text-white mb-6">
-            {languages[currentLang].servicesTitle}
+            {languages[currentLang].servicesPageTitle}
           </h1>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-            {languages[currentLang].servicesDescription}
+            {languages[currentLang].servicesPageDescription}
           </p>
         </div>
       </div>
