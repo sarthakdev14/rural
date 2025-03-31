@@ -83,15 +83,17 @@ function Home() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group"
             >
-              <div className="text-blue-600 dark:text-blue-400 mb-4">
-                {service.icon}
+              <div className="w-20 h-20 bg-blue-50 dark:bg-blue-900/30 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="text-blue-600 dark:text-blue-400">
+                  {service.icon}
+                </div>
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+              <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">
                 {service.title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-300">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                 {service.description}
               </p>
             </div>
