@@ -11,7 +11,7 @@ import { useLanguage } from "../context/LanguageContext";
 
 function Telemedicine() {
   const { currentLang, languages } = useLanguage();
-  const [selectedDoctor, setSelectedDoctor] = useState("");
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
 
@@ -20,7 +20,7 @@ function Telemedicine() {
       id: 1,
       name: "Dr. Sarah Johnson",
       specialization: "General Medicine",
-      experience: "15",
+      experience: 8,
       image:
         "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&q=80",
     },
@@ -28,26 +28,27 @@ function Telemedicine() {
       id: 2,
       name: "Dr. Michael Chen",
       specialization: "Pediatrics",
-      experience: "12",
-      image:
-        "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&auto=format&fit=crop&q=80",
-    },
-    {
-      id: 3,
-      name: "Dr. Priya Patel",
-      specialization: "Cardiology",
-      experience: "10",
-      image:
-        "https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&q=80",
-    },
-    {
-      id: 4,
-      name: "Dr. James Wilson",
-      specialization: "Mental Health",
-      experience: "8",
+      experience: 12,
       image:
         "https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&q=80",
     },
+    {
+      id: 3,
+      name: "Dr. Emily Brown",
+      specialization: "Cardiology",
+      experience: 15,
+      image:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&q=80",
+    },
+  ];
+
+  const timeSlots = [
+    "09:00 AM",
+    "10:00 AM",
+    "11:00 AM",
+    "02:00 PM",
+    "03:00 PM",
+    "04:00 PM",
   ];
 
   const handleSubmit = (e) => {
@@ -56,10 +57,10 @@ function Telemedicine() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
       {/* Hero Section */}
-      <div className="relative py-20 bg-blue-600">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&q=80')] bg-cover bg-center opacity-20"></div>
+      <div className="relative py-20 bg-blue-600 dark:bg-blue-800">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&q=80')] bg-cover bg-center opacity-20"></div>
         <div className="relative container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold text-white mb-6">
             {languages[currentLang].virtualHealthcare}
@@ -73,36 +74,36 @@ function Telemedicine() {
       <div className="container mx-auto px-4 py-16">
         {/* How It Works */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <div className="bg-white p-8 rounded-2xl shadow-lg text-center transform hover:-translate-y-1 transition-all duration-300">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <FaUserMd className="text-3xl text-blue-600" />
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center">
+            <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
+              <FaUserMd className="text-2xl text-blue-600 dark:text-blue-400" />
             </div>
-            <h3 className="text-xl font-bold mb-4">
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
               {languages[currentLang].chooseSpecialist}
             </h3>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-300">
               {languages[currentLang].chooseSpecialistDesc}
             </p>
           </div>
-          <div className="bg-white p-8 rounded-2xl shadow-lg text-center transform hover:-translate-y-1 transition-all duration-300">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <FaCalendar className="text-3xl text-blue-600" />
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center">
+            <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
+              <FaCalendar className="text-2xl text-blue-600 dark:text-blue-400" />
             </div>
-            <h3 className="text-xl font-bold mb-4">
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
               {languages[currentLang].bookTimeSlot}
             </h3>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-300">
               {languages[currentLang].bookTimeSlotDesc}
             </p>
           </div>
-          <div className="bg-white p-8 rounded-2xl shadow-lg text-center transform hover:-translate-y-1 transition-all duration-300">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <FaVideo className="text-3xl text-blue-600" />
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center">
+            <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
+              <FaVideo className="text-2xl text-blue-600 dark:text-blue-400" />
             </div>
-            <h3 className="text-xl font-bold mb-4">
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
               {languages[currentLang].videoConsultation}
             </h3>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-300">
               {languages[currentLang].videoConsultationDesc}
             </p>
           </div>
@@ -111,36 +112,34 @@ function Telemedicine() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           {/* Doctor List */}
           <div className="lg:col-span-2 space-y-6">
-            <h2 className="text-2xl font-bold mb-6">
+            <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
               {languages[currentLang].availableDoctors}
             </h2>
             {doctors.map((doctor) => (
               <div
                 key={doctor.id}
-                className={`bg-white p-4 rounded-xl shadow-md cursor-pointer transition-all duration-300 ${
-                  selectedDoctor === doctor.id.toString()
-                    ? "ring-2 ring-blue-600"
-                    : "hover:shadow-lg"
+                className={`bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden cursor-pointer transition-all duration-300 transform hover:-translate-y-1 ${
+                  selectedDoctor?.id === doctor.id
+                    ? "ring-2 ring-blue-500 dark:ring-blue-400"
+                    : ""
                 }`}
-                onClick={() => setSelectedDoctor(doctor.id.toString())}
+                onClick={() => setSelectedDoctor(doctor)}
               >
-                <div className="flex items-center space-x-4">
-                  <img
-                    src={doctor.image}
-                    alt={doctor.name}
-                    className="w-16 h-16 rounded-full object-cover"
-                  />
-                  <div>
-                    <h3 className="font-semibold text-gray-800">
-                      {doctor.name}
-                    </h3>
-                    <p className="text-sm text-gray-600">
-                      {doctor.specialization}
-                    </p>
-                    <p className="text-sm text-gray-500">
-                      {doctor.experience} {languages[currentLang].experience}
-                    </p>
-                  </div>
+                <img
+                  src={doctor.image}
+                  alt={doctor.name}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+                    {doctor.name}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-2">
+                    {doctor.specialization}
+                  </p>
+                  <p className="text-gray-500 dark:text-gray-400">
+                    {doctor.experience} {languages[currentLang].experience}
+                  </p>
                 </div>
               </div>
             ))}
@@ -148,18 +147,18 @@ function Telemedicine() {
 
           {/* Booking Form */}
           <div className="lg:col-span-3">
-            <div className="bg-white rounded-2xl shadow-lg p-8">
-              <h2 className="text-2xl font-bold mb-6">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+              <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
                 {languages[currentLang].scheduleAppointment}
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-gray-700 mb-2 font-medium">
+                  <label className="block text-gray-700 dark:text-gray-300 mb-2">
                     {languages[currentLang].selectDate}
                   </label>
                   <input
                     type="date"
-                    className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-300"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:bg-gray-700 dark:text-white"
                     value={selectedDate}
                     onChange={(e) => setSelectedDate(e.target.value)}
                     required
@@ -167,30 +166,32 @@ function Telemedicine() {
                 </div>
 
                 <div>
-                  <label className="block text-gray-700 mb-2 font-medium">
+                  <label className="block text-gray-700 dark:text-gray-300 mb-2">
                     {languages[currentLang].selectTime}
                   </label>
-                  <select
-                    className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-300"
-                    value={selectedTime}
-                    onChange={(e) => setSelectedTime(e.target.value)}
-                    required
-                  >
-                    <option value="">
-                      {languages[currentLang].chooseTimeSlot}
-                    </option>
-                    <option value="09:00">09:00 AM</option>
-                    <option value="10:00">10:00 AM</option>
-                    <option value="11:00">11:00 AM</option>
-                    <option value="14:00">02:00 PM</option>
-                    <option value="15:00">03:00 PM</option>
-                    <option value="16:00">04:00 PM</option>
-                  </select>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {timeSlots.map((time) => (
+                      <button
+                        key={time}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setSelectedTime(time);
+                        }}
+                        className={`px-4 py-2 rounded-lg border transition-colors ${
+                          selectedTime === time
+                            ? "bg-blue-600 text-white border-blue-600"
+                            : "border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                        }`}
+                      >
+                        {time}
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] font-semibold text-lg"
+                  className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   {languages[currentLang].scheduleConsultation}
                 </button>
