@@ -124,6 +124,17 @@ export const languages = {
     emergencyContactsDesc: "Important emergency contact numbers",
     nearestHospital: "Nearest Hospital",
     nearestHospitalDesc: "Find the closest hospital to your location",
+
+    // Features Section
+    expertDoctors: "Expert Doctors",
+    expertDoctorsDesc:
+      "Our team of experienced healthcare professionals is dedicated to providing the best care",
+    modernFacilities: "Modern Facilities",
+    modernFacilitiesDesc:
+      "State-of-the-art medical equipment and comfortable treatment environments",
+    compassionateCare: "Compassionate Care",
+    compassionateCareDesc:
+      "We treat every patient with empathy, respect, and personalized attention",
   },
   es: {
     // Navigation
@@ -250,6 +261,17 @@ export const languages = {
     emergencyContactsDesc: "Números de contacto de emergencia importantes",
     nearestHospital: "Hospital más Cercano",
     nearestHospitalDesc: "Encuentre el hospital más cercano a su ubicación",
+
+    // Features Section
+    expertDoctors: "Médicos Expertos",
+    expertDoctorsDesc:
+      "Nuestro equipo de profesionales de la salud experimentados está dedicado a brindar la mejor atención",
+    modernFacilities: "Instalaciones Modernas",
+    modernFacilitiesDesc:
+      "Equipamiento médico de última generación y entornos de tratamiento confortables",
+    compassionateCare: "Atención Compasiva",
+    compassionateCareDesc:
+      "Tratamos a cada paciente con empatía, respeto y atención personalizada",
   },
   hi: {
     // Navigation
@@ -371,6 +393,16 @@ export const languages = {
     emergencyContactsDesc: "महत्वपूर्ण आपातकालीन संपर्क नंबर",
     nearestHospital: "निकटतम अस्पताल",
     nearestHospitalDesc: "अपने स्थान के निकटतम अस्पताल का पता लगाएं",
+
+    // Features Section
+    expertDoctors: "विशेषज्ञ डॉक्टर",
+    expertDoctorsDesc:
+      "हमारी अनुभवी स्वास्थ्य पेशेवरों की टीम सर्वोत्तम देखभाल प्रदान करने के लिए समर्पित है",
+    modernFacilities: "आधुनिक सुविधाएं",
+    modernFacilitiesDesc: "अत्याधुनिक चिकित्सा उपकरण और आरामदायक उपचार वातावरण",
+    compassionateCare: "दयालु देखभाल",
+    compassionateCareDesc:
+      "हम हर मरीज का इलाज सहानुभूति, सम्मान और व्यक्तिगत ध्यान के साथ करते हैं",
   },
 };
 
