@@ -1,0 +1,76 @@
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import cors from "cors";
+import bodyParser from "body-parser";
+
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+
+// MongoDB Connection
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("✅ MongoDB Connected");
+  } catch (error) {
+    console.error("❌ MongoDB Connection Error:", error);
+    process.exit(1);
+  }
+};
+connectDB();
+
+// Define Schema & Model
+const appointmentSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  phone: String,
+  date: String,
+  time: String,
+  service: String,
+});
+
+const Appointment = mongoose.model("Appointment", appointmentSchema);
+
+// 🟢 API Route: Book Appointment
+app.post("/book-appointment", async (req, res) => {
+  try {
+    const { name, email, phone, date, time, service } = req.body;
+
+    // Check if an appointment already exists for the given email
+    const existingAppointment = await Appointment.findOne({ email, date });
+
+    if (existingAppointment) {
+      return res.status(400).json({ message: "❌ You already have an appointment on this date!" });
+    }
+
+    // Create new appointment
+    const newAppointment = new Appointment({ name, email, phone, date, time, service });
+    await newAppointment.save();
+
+    res.status(201).json({ message: "✅ Appointment booked successfully!" });
+  } catch (error) {
+    res.status(500).json({ message: "❌ Server Error", error: error.message });
+  }
+});
+
+// 🟢 API Route: Get All Appointments
+app.get("/appointments", async (req, res) => {
+  try {
+    const appointments = await Appointment.find();
+    res.status(200).json(appointments);
+  } catch (error) {
+    res.status(500).json({ message: "❌ Server Error", error: error.message });
+  }
+});
+
+// Start Server
+app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));

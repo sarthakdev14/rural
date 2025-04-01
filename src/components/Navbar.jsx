@@ -81,15 +81,15 @@ function Navbar() {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium relative group ${
+                  className={`text-gray-900 dark:text-gray-300 hover:text-blue-700 dark:hover:text-blue-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md px-2 py-1 transition-colors font-medium relative group ${
                     location.pathname === item.path
-                      ? "text-blue-600 dark:text-blue-400"
+                      ? "text-gray-500 dark:text-white-300"
                       : ""
                   }`}
                 >
                   {item.name}
                   <span
-                    className={`absolute bottom-0 left-0 h-0.5 bg-blue-600 dark:bg-blue-400 transition-all duration-300 ${
+                    className={`absolute bottom-0 left-0 h-0.5 bg-blue-700 dark:bg-blue-300 transition-all duration-300 ${
                       location.pathname === item.path
                         ? "w-full"
                         : "w-0 group-hover:w-full"

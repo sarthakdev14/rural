@@ -9,8 +9,11 @@ import {
   FaBrain,
 } from "react-icons/fa";
 import { useLanguage } from "../context/LanguageContext";
+import { Link, useNavigate } from "react-router-dom";
 
 function Services() {
+  const navigate = useNavigate();
+
   const { currentLang, languages } = useLanguage();
 
   const medicalServices = [
@@ -152,9 +155,12 @@ function Services() {
                 </div>
 
                 {/* Action Button */}
-                <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 text-white py-3 rounded-xl hover:from-blue-700 hover:to-blue-800 dark:hover:from-blue-600 dark:hover:to-blue-700 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
-                  {languages[currentLang].bookAppointment}
-                </button>
+                <Link
+                  to="/book-appointment"
+                  className="w-full block text-center bg-blue-600 text-white py-3 rounded-lg transition hover:bg-blue-700"
+                >
+                  Book Appointment
+                </Link>
               </div>
             </div>
           ))}
