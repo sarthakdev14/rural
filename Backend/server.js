@@ -33,6 +33,7 @@ const connectDB = async () => {
 };
 connectDB();
 
+
 // Define Schema & Model
 const appointmentSchema = new mongoose.Schema({
   name: String,
@@ -80,7 +81,7 @@ app.get("/appointments", async (req, res) => {
 
 
 const doctorSchema = new mongoose.Schema({
-  doctorId: mongoose.Schema.Types.ObjectId,  // Reference to Doctor
+  doctorId: { type: String, required: true }, // Allow String IDs 
   doctorName: String,
   specialization: String,
   email: String,
@@ -108,6 +109,7 @@ app.post("/schedule-appointment", async (req, res) => {
 
     res.status(201).json({ message: "✅ Doctor appointment scheduled successfully!" });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "❌ Server Error", error: error.message });
   }
 });

@@ -65,7 +65,7 @@ function Telemedicine() {
 
     const appointmentData = {
     email,
-    doctorId: selectedDoctor.id,
+    doctorId: String(selectedDoctor.id),
     doctorName: selectedDoctor.name,
     specialization: selectedDoctor.specialization,
     date: selectedDate,
