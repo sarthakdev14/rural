@@ -16,12 +16,39 @@ function BookAppointment() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("Appointment Details:", formData);
+  //   alert("Appointment booked successfully!");
+  //   navigate("/");
+  // };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Appointment Details:", formData);
-    alert("Appointment booked successfully!");
-    navigate("/");
+  
+    try {
+      const response = await fetch("http://localhost:8000/book-appointment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        alert(data.message);
+        navigate("/");
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error("Error booking appointment:", error);
+      alert("❌ Failed to book appointment. Please try again.");
+    }
   };
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-800">
