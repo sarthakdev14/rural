@@ -15,6 +15,7 @@ function Telemedicine() {
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
+  const [email, setEmail] = useState("");
 
   const doctors = [
     {
@@ -52,9 +53,41 @@ function Telemedicine() {
     "04:00 PM",
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ selectedDoctor, selectedDate, selectedTime });
+
+    if (!selectedDoctor || !selectedDate || !selectedTime || !email) {
+      alert("⚠️ Please fill in all fields.");
+      return;
+    }
+
+    console.log({ email, selectedDoctor, selectedDate, selectedTime });
+
+    const appointmentData = {
+    email,
+    doctorId: selectedDoctor.id,
+    doctorName: selectedDoctor.name,
+    specialization: selectedDoctor.specialization,
+    date: selectedDate,
+    time: selectedTime,
+  };
+
+    try {
+      const response = await fetch(
+        "http://localhost:8000/schedule-appointment",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(appointmentData),
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+      alert(data.message);
+    } catch (error) {
+      console.error("Error booking appointment:", error);
+      alert("Failed to book appointment. Please try again.");
+    }
   };
 
   return (
@@ -183,6 +216,20 @@ function Telemedicine() {
                         </p>
                       </div>
                     </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-gray-700 dark:text-gray-300 mb-2">
+                      Enter Email
+                    </label>
+                    <input
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:bg-gray-700 dark:text-white"
+                      type="email"
+                      placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
                   </div>
 
                   <div>
