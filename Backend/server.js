@@ -17,7 +17,7 @@ app.listen(PORT, () => {
 
 // Middleware
 // app.use(cors());
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(express.json());
 
 // MongoDB Connection
@@ -46,11 +46,12 @@ const Appointment = mongoose.model("Appointment", appointmentSchema);
 
 // 🟢 API Route: Book Appointment
 app.post("/book-appointment", async (req, res) => {
+  console.log("Incoming Request:", req.body);
   try {
     const { name, email, phone, date, time, service } = req.body;
 
     // Check if an appointment already exists for the given email
-    const existingAppointment = await Appointment.findOne({ email, date });
+    const existingAppointment = await Appointment.findOne({ email, date, time });
 
     if (existingAppointment) {
       return res.status(400).json({ message: "❌ You already have an appointment on this date!" });
