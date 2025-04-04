@@ -9,6 +9,7 @@ import Emergency from "./pages/Emergency";
 import BookAppointment from "./pages/BookAppointment";
 import { LanguageProvider } from "./context/LanguageContext";
 import { DarkModeProvider } from "./context/DarkModeContext";
+import ChatBot from "./components/ChatBot";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               </Routes>
             </main>
             <Footer />
+            <ChatBot />
           </div>
         </Router>
       </DarkModeProvider>
